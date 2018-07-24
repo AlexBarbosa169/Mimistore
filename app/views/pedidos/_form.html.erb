@@ -1,0 +1,40 @@
+<%= form_with(model: pedido, local: true) do |form| %>
+  <% if pedido.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pedido.errors.count, "error") %> prohibited this pedido from being saved:</h2>
+
+      <ul>
+      <% pedido.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :descricao %>
+    <%= form.text_field :descricao, id: :pedido_descricao %>
+  </div>
+
+  <div class="field">
+    <%= form.label :finalizado %>
+    <%#= form.check_box :finalizado, id: :pedido_finalizado %>
+    <%= form.select :finalizado, options_for_select([["Sim","S"],["Não","N"]],["Não","N"])%>
+  </div>
+
+  <div class="field">
+    <%= form.label :aprovado %>
+    <%#= form.check_box :finalizado, id: :pedido_finalizado %>
+    <%= form.select :aprovado, options_for_select([["Sim","S"],["Não","N"]],["Não","N"])%>
+  </div>  
+
+  <div class="field">
+    <%= form.label :client_id %>
+    <%#= form.check_box :finalizado, id: :pedido_finalizado %>
+    <%= form.select :client_id, options_for_select([[current_client.nome,current_client.id]],current_client.nome)%>
+  </div>  
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

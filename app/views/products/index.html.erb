@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1 style="text-align: center; text-align: center;
+    background-color: beige;">Produtos</h1>
+<% if admin_signed_in? %>
+    <%= link_to 'New Product', new_product_path %>
+<% end %>
+<div style="padding: 3%; background-color: antiquewhite; margin: auto;">
+  <div class="row" style="width:  ; margin: auto; margin: auto;">  
+    <% @products.each do |product| %>
+      <div class="col-sm-4">
+        <div class="card" style="width: 18rem;">      
+          <%= image_tag "teste.jpg" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= product.nome %></h5>
+            <p class="card-text"><%= product.descricao %></p>
+            <p class="card-text"><strong>Quantidade: </strong><%= product.descricao %></p>
+            <%= link_to 'Show', product %>
+            <%= link_to 'Edit', edit_product_path(product) %>
+            <%#= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </div>
+    </div>        
+    <% end %>          
+</div>  
+</div>    
+<br>
+
+

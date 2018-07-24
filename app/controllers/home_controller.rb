@@ -1,4 +1,5 @@
-class HomeController < ApplicationController
-  def index
-  end
+class HomeController < ApplicationController  
+  	def teste
+		"Isso é um teste"
+	end
 end

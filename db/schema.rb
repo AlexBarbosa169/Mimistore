@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180719222840) do
+ActiveRecord::Schema.define(version: 20180721133218) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "nome"
@@ -52,4 +52,35 @@ ActiveRecord::Schema.define(version: 20180719222840) do
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
   end
 
+  create_table "pedidos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "descricao"
+    t.string "finalizado"
+    t.string "aprovado"
+    t.bigint "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_pedidos_on_client_id"
+  end
+
+  create_table "pedidos_products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "pedido_id"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pedido_id"], name: "index_pedidos_products_on_pedido_id"
+    t.index ["product_id"], name: "index_pedidos_products_on_product_id"
+  end
+
+  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "nome"
+    t.string "descricao"
+    t.float "valor", limit: 24
+    t.integer "quantidade"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "pedidos", "clients"
+  add_foreign_key "pedidos_products", "pedidos"
+  add_foreign_key "pedidos_products", "products"
 end

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<!-- <p>
+  <strong>Nome:</strong>
+  <%= @product.nome %>
+</p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @product.descricao %>
+</p>
+
+<p>
+  <strong>Valor:</strong>
+  <%= @product.valor %>
+</p>
+
+<p>
+  <strong>Quantidadi:</strong>
+  <%= @product.quantidade %>
+</p> -->
+
+<div class="card mb-3" style="width: 80%; margin: auto;">  
+  <%= image_tag "paisagem.jpg" %>
+  <div class="card-body">
+    <h5 class="card-title"><%= @product.nome %></h5>
+    <p class="card-text"><%= @product.descricao %></p>
+    <p class="card-text"><small class="text-muted"><%= @product.valor %></small></p>
+    <p class="card-text"><small class="text-muted"><%= @product.quantidade %></small></p>
+  </div>
+</div>
+
+<%= link_to 'Edit',edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
+<% if client_signed_in? %>
+<a href="/pedidos/1/adicionar/<%=@product.id%>">Adicionar</a>
+<% end %>
+
+
