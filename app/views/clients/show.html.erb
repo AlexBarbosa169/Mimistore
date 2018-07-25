@@ -1,24 +1,46 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nome:</strong>
-  <%= @client.nome %>
-</p>
-
-<p>
-  <strong>Apelido:</strong>
-  <%= @client.apelido %>
-</p>
-
-<p>
-  <strong>Nascimento:</strong>
-  <%= @client.nascimento %>
-</p>
-
-<p>
-  <strong>Cpf:</strong>
-  <%= @client.cpf %>
-</p>
-
+<div class="container"> 
+  <h1 > Dados do Usuário</h1>
+    <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Apelido</th>
+      <th scope="col">Nascimento</th>
+      <th scope="col">CPF</th>      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>      
+      <td><%= @client.nome %></td>
+      <td><%= @client.apelido %></td>
+      <td><%= @client.nascimento %></td>
+      <td><%= @client.cpf %></td>
+    </tr>
+  </tbody>
+</table>
+<table class="table">
+  <thead class="thead-light">
+    <tr>      
+      <th scope="col">Rua</th>
+      <th scope="col">Bairro</th>
+      <th scope="col">Cidade</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Cep</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>      
+      <td><%= @client.adress.rua %></td>
+      <td><%= @client.adress.bairro %></td>
+      <td><%= @client.adress.cidade %></td>
+      <td> <%= @client.adress.estado %></td>
+      <td> <%= @client.adress.cep %>  </td>
+    </tr>
+</tbody>
+</table>
 <%= link_to 'Edit', edit_client_path(@client) %> |
 <%= link_to 'Back', clients_path %>
+</div>
+

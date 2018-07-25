@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180721133218) do
+ActiveRecord::Schema.define(version: 20180724165930) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "nome"
@@ -29,6 +29,18 @@ ActiveRecord::Schema.define(version: 20180721133218) do
     t.string "last_sign_in_ip"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "adresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "rua"
+    t.string "cidade"
+    t.string "bairro"
+    t.string "estado"
+    t.string "cep"
+    t.bigint "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_adresses_on_client_id"
   end
 
   create_table "clients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -80,6 +92,7 @@ ActiveRecord::Schema.define(version: 20180721133218) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "adresses", "clients"
   add_foreign_key "pedidos", "clients"
   add_foreign_key "pedidos_products", "pedidos"
   add_foreign_key "pedidos_products", "products"

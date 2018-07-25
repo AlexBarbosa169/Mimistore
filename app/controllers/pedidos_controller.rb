@@ -1,5 +1,7 @@
 class PedidosController < ApplicationController
   before_action :set_pedido, only: [:show, :edit, :update, :destroy]  
+  before_action :authenticate_client!, only: [:index, :edit] or
+  before_action :authenticate_admin!, only: [:index, :destroy, :edit]
 
   # GET /pedidos
   # GET /pedidos.json

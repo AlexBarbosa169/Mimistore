@@ -1,6 +1,7 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_client!
+  before_action :authenticate_admin!, only: [:index, :destroy]
+  before_action :authenticate_client!, only: [:edit, :update, :destroy]
 
   # GET /clients
   # GET /clients.json
@@ -16,6 +17,7 @@ class ClientsController < ApplicationController
   # GET /clients/new
   def new
     @client = Client.new
+    @client.build_adress
   end
 
   # GET /clients/1/edit
@@ -70,6 +72,6 @@ class ClientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:nome, :apelido, :nascimento, :cpf)
+      params.require(:client).permit(:nome, :apelido, :nascimento, :cpf, adress_attributes:[:rua,:bairro,:cidade,:estado,:cep,:id])
     end
 end
