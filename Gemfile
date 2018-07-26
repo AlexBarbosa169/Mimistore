@@ -5,6 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Gem de internacionalização 
+gem 'rails-i18n'    
+# Gem que provê paginação
+gem 'kaminari'
 # Permite relacionamento has Many nas Views
 gem 'cocoon'
 # Gem jquery
@@ -13,6 +17,8 @@ gem 'jquery-rails'
 gem 'bootstrap'
 # Autenticação
 gem 'devise'
+# internacionalização i18n
+gem 'devise-i18n'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
 # Use mysql as the database for Active Record

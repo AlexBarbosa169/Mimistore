@@ -2,11 +2,11 @@
   <p id="notice"><%= notice %></p>
 
 <h1 style="text-align: center; text-align: center;
-    background-color: beige;">Produtos</h1>
+    ">Produtos</h1>
 <% if admin_signed_in? %>
     <%= link_to 'New Product', new_product_path %>
 <% end %>
-<div style="padding: 3%; background-color: antiquewhite; margin: auto;">  
+<div style="padding: 3%;  margin: auto;">  
     <div class="row" style="width:  ; margin: auto; margin: auto;">  
     <% @products.each do |product| %>    
       <div class="col-sm-4" style="border-radius: 20%">
@@ -25,6 +25,7 @@
     
 <% end %>          
 </div>
+<%= paginate(@products) %>
 </div>    
 <br>  
 </div>

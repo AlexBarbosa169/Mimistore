@@ -77,9 +77,17 @@
     <div class="field">
       <%= adress_fields.label :cep %>
       <%= adress_fields.text_field :cep, id: :adress_cep %>
-    </div>
+    </div>   
 
   <% end %>
+  
+   <div id="contacts">
+    <%= form.fields_for :contacts do |contacts_fields| %>
+      <%= render partial:"contact_fields", locals: {f: contacts_fields} %>
+      <% end %>
+      <%= link_to_add_association('[Adicinar Contato]',form, :contacts) %>
+  </div>
+
   </div>  
   <div class="actions">
     <%= form.submit %>

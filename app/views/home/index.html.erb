@@ -1,2 +1,25 @@
 <h1 style="text-align: center;">Mimistore</h1>
-<div style="text-align:  center; margin: auto;"><%= render partial:'layouts/carrossel' %> </div>
+<div style="text-align:  center; margin: auto;">
+	<%= render partial:'layouts/carrossel' %>
+	<div class="container"> 
+			<div class="row" style="width:  ; margin: auto; margin: auto;">  
+    <% @products.each do |product| %>    
+      <div class="col-sm-4" style="border-radius: 20%">
+        <div class="card" style="width: 18rem;">      
+          <%= image_tag "teste.jpg" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= product.nome %></h5>
+            <p class="card-text"><%= product.descricao %></p>
+            <p class="card-text"><strong>Quantidade: </strong><%= product.descricao %></p>
+            <%= link_to 'Show', product %>
+            <%= link_to 'Edit', edit_product_path(product) %>
+            <%#= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </div>
+    </div>        
+    
+<% end %>          
+</div>
+	</div>
+	
+ </div>

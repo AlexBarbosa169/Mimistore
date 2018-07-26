@@ -1,0 +1,23 @@
+<div class="nested-fields">
+		
+
+	<div class="field">
+		<%
+		if @client.contacts.count == 0
+			opcao = "email"
+		else
+			opcao = @client.contacts[f.index.to_i].tipo
+		end
+		%>
+		<%= f.label :tipo %>		
+		<%= f.select :tipo, options_for_select([
+			["e-mail","e-mail"],
+			["telefone","telefone"],			
+			], opcao)%>
+		
+		<%= f.label :valor %>
+		<%= f.text_field :valor %>
+
+		<%= link_to_remove_association('[Remover]',f)%>
+	</div>	
+</div>

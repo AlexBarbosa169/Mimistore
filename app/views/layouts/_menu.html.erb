@@ -1,20 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="<%=home_index_path%>">Home</a>
+  <a class="navbar navbar-dark bg-dark" href="<%=home_index_path%>">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="<%=home_index_path%>">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="<%=products_path%>">Produtos</a>
-      <%if (client_signed_in?)%>
-      <a class="nav-item nav-link" href="<%=pedidos_path%>">Meus Pedidos</a>            
+    <div class="navbar-nav">      
+      <%= link_to "Home", home_index_path, :class => "btn btn-light"  %>
+      <%= link_to "Produtos", products_path, :class => "btn btn-light"  %>
+      <%if (client_signed_in?)%>      
+          <%= link_to "Meus Pedidos", pedidos_path, :class => "btn btn-light"  %>
+          <%= link_to "Meus Dados", client_path(current_client.id), :class => "btn btn-light"  %>          
           <%= link_to "Sair", destroy_client_session_path, method: :delete, :class => "btn btn-danger"  %>
       <%else%> 
           <%if (admin_signed_in?) %>
               <%= link_to "Sair", destroy_admin_session_path, method: :delete, :class => "btn btn-danger"  %>
           <%else%>
-              <%= link_to "Logar", client_session_path, method: :get, :class =>"btn btn-success"  %>
+              <%= link_to "Entrar", client_session_path, method: :get, :class =>"btn btn-success"  %>
           <%end%>
       <%end%>
     </div>     
