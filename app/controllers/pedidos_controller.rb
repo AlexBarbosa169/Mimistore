@@ -1,7 +1,8 @@
 class PedidosController < ApplicationController
   before_action :set_pedido, only: [:show, :edit, :update, :destroy]  
-  before_action :authenticate_client!, only: [:index, :edit] or
-  before_action :authenticate_admin!, only: [:index, :destroy, :edit]
+  
+  #before_action :authenticate_client!, only: [:index, :edit]
+  #before_action :authenticate_admin!, only: [:index, :destroy, :edit]
 
   # GET /pedidos
   # GET /pedidos.json
@@ -36,11 +37,12 @@ class PedidosController < ApplicationController
   def adicionar
     
     @i = current_client.pedidos.last
+    #@i = current_client.pedidos.where("finalizado" => "N")
     if @i.nil?
         redirect_to new_pedido_path
     else    
     @p = Product.find(params[:productid])    
-    @i.products.push(@p)
+    @i.products.push(@p)    
     respond_to do |format|    
       if @i.save
           format.html { redirect_to @i, notice: 'Pedido was successfully created.' }

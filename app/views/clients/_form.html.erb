@@ -15,27 +15,27 @@
     <h2> Dados do Cliente </h2>
       <div class="field">
     <%= form.label :nome %>
-    <%= form.text_field :nome, id: :client_nome %>
+    <%= form.text_field :nome, id: :client_nome , :required => true%>
   </div>
 
   <div class="field">
     <%= form.label :apelido %>
-    <%= form.text_field :apelido, id: :client_apelido %>
+    <%= form.text_field :apelido, id: :client_apelido , :required => true%>
   </div>
 
   <div class="field">
     <%= form.label :email %><br />
-    <%= form.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= form.email_field :email, autofocus: true, autocomplete: "email" , :required => true%>
   </div>
 
   <div class="field">
     <%= form.label :nascimento %>
-    <%= form.datetime_select :nascimento, id: :client_nascimento %>
+    <%= form.date_select :nascimento, id: :client_nascimento , :required => true%>
   </div>  
 
   <div class="field">
     <%= form.label :cpf %>
-    <%= form.text_field :cpf, id: :client_cpf %>
+    <%= form.text_field :cpf, id: :client_cpf , :required => true%>
   </div>
 
   <div class="field">
@@ -43,12 +43,12 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= form.password_field :password, autocomplete: "off" %>
+    <%= form.password_field :password, autocomplete: "off", :required => true %>
   </div>
 
   <div class="field">
     <%= form.label :password_confirmation %><br />
-    <%= form.password_field :password_confirmation, autocomplete: "off" %>
+    <%= form.password_field :password_confirmation, autocomplete: "off", :required => true %>
   </div>
   </div>  
   <div class="col-sm-6"> 
@@ -56,27 +56,27 @@
       <%= form.fields_for :adress do |adress_fields| %>
     <div class="field">
       <%= adress_fields.label :rua %>
-      <%= adress_fields.text_field :rua, id: :adress_rua %>
+      <%= adress_fields.text_field :rua, id: :adress_rua , :required => true%>
     </div>
 
     <div class="field">
       <%= adress_fields.label :bairro %>
-      <%= adress_fields.text_field :bairro, id: :adress_bairro %>
+      <%= adress_fields.text_field :bairro, id: :adress_bairro ,:required => true%>
     </div>
 
     <div class="field">
       <%= adress_fields.label :cidade %>
-      <%= adress_fields.text_field :cidade, id: :adress_cidade %>
+      <%= adress_fields.text_field :cidade, id: :adress_cidade ,:required => true%>
     </div>
 
     <div class="field">
       <%= adress_fields.label :estado %>
-      <%= adress_fields.text_field :estado, id: :adress_estado %>
+      <%= adress_fields.text_field :estado, id: :adress_estado ,:required => true%>
     </div>
 
     <div class="field">
       <%= adress_fields.label :cep %>
-      <%= adress_fields.text_field :cep, id: :adress_cep %>
+      <%= adress_fields.text_field :cep, id: :adress_cep ,:required => true%>
     </div>   
 
   <% end %>

@@ -11,14 +11,16 @@
     <% @products.each do |product| %>    
       <div class="col-sm-4" style="border-radius: 20%">
         <div class="card" style="width: 18rem;">      
-          <%= image_tag "teste.jpg" %>
+          <%= image_tag product.imagem  %>
           <div class="card-body">
             <h5 class="card-title"><%= product.nome %></h5>
             <p class="card-text"><%= product.descricao %></p>
             <p class="card-text"><strong>Quantidade: </strong><%= product.descricao %></p>
-            <%= link_to 'Show', product %>
-            <%= link_to 'Edit', edit_product_path(product) %>
-            <%#= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Show', product %>            
+            <% if admin_signed_in? %>     
+            <%= link_to 'Edit', edit_product_path(product) %>           
+            <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
           </div>
         </div>
     </div>        

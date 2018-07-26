@@ -19,21 +19,24 @@
   <strong>Quantidadi:</strong>
   <%= @product.quantidade %>
 </p> -->
-<div class="container">
-  <div class="card mb-3">  
-    <%= image_tag "paisagem.jpg" %>
+
+<div class="container" style="text-align: center;">
+  <div class="card" style="width: 18rem; margin: auto;">
+    <%= image_tag @product.imagem, class: "card-img-top" %>
     <div class="card-body">
-      <h5 class="card-title"><%= @product.nome %></h5>
-      <p class="card-text"><%= @product.descricao %></p>
-      <p class="card-text"><small class="text-muted"><%= @product.valor %></small></p>
-      <p class="card-text"><small class="text-muted"><%= @product.quantidade %></small></p>
+      <h5 class="card-title">Nome<%= @product.nome %></h5>
+      <p class="card-text">Descrição: <%= @product.descricao %></p>
+      <p class="card-text">Valor: <small class="text-muted"><%= @product.valor %></small></p>
+      <p class="card-text">Quantidade: <small class="text-muted"><%= @product.quantidade %></small></p>
     </div>
   </div>
+  
 
 <%= link_to 'Edit',edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
 <% if client_signed_in? %>
-    <% if current_client.pedidos.nil? %>
+    <% if current_client.pedidos.last.nil? %>
+    <%# if current_client.pedidos.where("finalizado" => "N").nil? %>
       <%= link_to 'Abrir novo Pedido', new_pedido_path %>
     <% else %>
         <% if current_client.pedidos.last.products.find_by_id(@product.id)%>  

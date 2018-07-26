@@ -13,6 +13,8 @@
           <%= link_to "Sair", destroy_client_session_path, method: :delete, :class => "btn btn-danger"  %>
       <%else%> 
           <%if (admin_signed_in?) %>
+          <%= link_to "Meus Clientes", clients_path, :class => "btn btn-light"  %>
+          <%= link_to "Todos os Pedidos", pedidos_path, :class => "btn btn-light"  %>
               <%= link_to "Sair", destroy_admin_session_path, method: :delete, :class => "btn btn-danger"  %>
           <%else%>
               <%= link_to "Entrar", client_session_path, method: :get, :class =>"btn btn-success"  %>

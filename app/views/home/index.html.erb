@@ -6,7 +6,7 @@
     <% @products.each do |product| %>    
       <div class="col-sm-4" style="border-radius: 20%">
         <div class="card" style="width: 18rem;">      
-          <%= image_tag "teste.jpg" %>
+          <%= image_tag product.imagem %>
           <div class="card-body">
             <h5 class="card-title"><%= product.nome %></h5>
             <p class="card-text"><%= product.descricao %></p>

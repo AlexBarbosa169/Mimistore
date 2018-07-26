@@ -35,4 +35,7 @@
 
 <br>
 
-<%= link_to 'New Pedido', new_pedido_path %>
+<% if client_signed_in? %>
+    <%= link_to 'New Pedido', new_pedido_path %>  
+<% end %>
+

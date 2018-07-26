@@ -22,11 +22,15 @@
     <%= form.select :finalizado, options_for_select([["Sim","S"],["Não","N"]],["Não","N"])%>
   </div>
 
+  <% if admin_signed_in? %>
+
   <div class="field">
     <%= form.label :aprovado %>
     <%#= form.check_box :finalizado, id: :pedido_finalizado %>
     <%= form.select :aprovado, options_for_select([["Sim","S"],["Não","N"]],["Não","N"])%>
   </div>  
+
+  <% end %>
 
   <div class="field">
     <%= form.label :client_id %>
